@@ -8,8 +8,13 @@ export default class TourList extends Component {
         tours: tourData
     };
     removeTour = id => {
+        const { tours } = this.state;
+        const sortedTours = tours.filter(tour => tour.id !== id);
+        this.setState({
+            tours: sortedTours
+        })
+    };
 
-    }
     render() {
         //console.log(this.state.tours)
         const { tours } = this.state;
@@ -18,7 +23,7 @@ export default class TourList extends Component {
             <section className="tourlist">
                 {
                     tours.map(tour => (<Tour key={tour.id} tour={tour} removeTour={this.removeTour} ></Tour>))
-    }
+                }
             </section>
         );
     }
